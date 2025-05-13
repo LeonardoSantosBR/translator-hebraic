@@ -1,8 +1,8 @@
 function App() {
   return (
-    <>
-      <h1 className="underline">basecode</h1>
-    </>
+    <div className="w-full min-h-screen">
+      <div className="w-full h-24"></div>
+    </div>
   )
 }
 
