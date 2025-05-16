@@ -2,7 +2,6 @@
 import Header from "./components/header";
 import Spinner from "./components/spinner";
 import { useEffect, useState } from "react";
-import { Input } from "@chakra-ui/react";
 import { useMutation } from "@tanstack/react-query";
 import { handleTranslate } from "./http/handle-translate";
 
@@ -35,18 +34,13 @@ function App() {
     <div className="w-full min-h-screen flex flex-col">
       <Header />
       <div className="w-full flex-[9] bg-[#dfe3ee] grid grid-cols-2">
-        <div className="flex justify-center p-6 bg-gray-200">
-          <div className="w-full h-full max-w-md bg-blue-500 text-white p-6 rounded-xl shadow-lg text-center">
-            <Input
-              placeholder="Digite aqui..."
-              size="lg"
-              variant="flushed"
-              color="white"
-              className="placeholder:text-white text-white"
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-            />
-          </div>
+        <div className="flex justify-center p-6 bg-blue-500">
+          <textarea
+            placeholder="Digite aqui..."
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            className="w-full h-64 p-4 text-white bg-blue-500  placeholder-white outline-none resize-none"
+          />
         </div>
         <div className="bg-slate-300">
           {isLoading ? (
