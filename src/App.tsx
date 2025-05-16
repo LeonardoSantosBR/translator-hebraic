@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Header from "./components/header";
+import Spinner from "./components/spinner";
 import { useEffect, useState } from "react";
-import { Input, Spinner } from "@chakra-ui/react";
+import { Input } from "@chakra-ui/react";
 import { useMutation } from "@tanstack/react-query";
 import { handleTranslate } from "./http/handle-translate";
 
@@ -18,7 +19,10 @@ function App() {
   });
 
   useEffect(() => {
-    if (!text) return;
+    if (!text) {
+      setResult("");
+      return;
+    }
 
     const delayDebounce = setTimeout(() => {
       mutate({ text });
@@ -31,8 +35,8 @@ function App() {
     <div className="w-full min-h-screen flex flex-col">
       <Header />
       <div className="w-full flex-[9] bg-[#dfe3ee] grid grid-cols-2">
-        <div className="w-full flex justify-center items-center bg-gray-200">
-          <div className="w-3/4 max-w-md bg-blue-500 text-white p-6 rounded-xl shadow-lg text-center">
+        <div className="flex justify-center p-6 bg-gray-200">
+          <div className="w-full h-full max-w-md bg-blue-500 text-white p-6 rounded-xl shadow-lg text-center">
             <Input
               placeholder="Digite aqui..."
               size="lg"
@@ -45,10 +49,13 @@ function App() {
           </div>
         </div>
         <div className="bg-slate-300">
-          <p className="text-lg font-medium p-5 text-black underline">
-            {result}
-          </p>
-          <Spinner />
+          {isLoading ? (
+            <Spinner />
+          ) : (
+            <p className="text-lg font-medium p-5 text-black underline">
+              {result}
+            </p>
+          )}
         </div>
       </div>
     </div>
