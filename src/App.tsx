@@ -19,7 +19,10 @@ function App() {
   });
 
   useEffect(() => {
-    if (!text) return;
+    if (!text) {
+      setResult("");
+      return;
+    }
 
     const delayDebounce = setTimeout(() => {
       mutate({ text });
