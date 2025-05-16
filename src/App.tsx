@@ -1,7 +1,12 @@
+import { useEffect, useState } from "react";
 import Header from "./components/header";
 import { Input } from "@chakra-ui/react";
 
 function App() {
+  const [text, setText] = useState("");
+
+  useEffect(() => {});
+
   return (
     <div className="w-full min-h-screen flex flex-col">
       <Header />
@@ -15,12 +20,16 @@ function App() {
               variant="flushed"
               color="white"
               className="placeholder:text-white text-white"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
             />
           </div>
         </div>
 
-        <div>
-          <p className="text-lg font-medium">Lado Direito</p>
+        <div className="bg-slate-300">
+          <p className="text-lg font-medium p-5 text-black underline">
+            Lado Direito
+          </p>
         </div>
       </div>
     </div>
