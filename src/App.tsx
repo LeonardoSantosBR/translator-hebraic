@@ -1,12 +1,31 @@
-import { useEffect, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
 import Header from "./components/header";
-import { Input } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { Input, Spinner } from "@chakra-ui/react";
+import { useMutation } from "@tanstack/react-query";
+import { handleTranslate } from "./http/handle-translate";
 
 function App() {
   const [text, setText] = useState("");
   const [result, setResult] = useState("");
 
-  useEffect(() => {}, [text]);
+  const { mutate, isLoading } = useMutation({
+    mutationFn: handleTranslate,
+    onSuccess: (data) => {
+      const textResult = data.data.translations[0].translatedText;
+      setResult(textResult);
+    },
+  });
+
+  useEffect(() => {
+    if (!text) return;
+
+    const delayDebounce = setTimeout(() => {
+      mutate({ text });
+    }, 1000);
+
+    return () => clearTimeout(delayDebounce);
+  }, [text]);
 
   return (
     <div className="w-full min-h-screen flex flex-col">
@@ -27,8 +46,9 @@ function App() {
         </div>
         <div className="bg-slate-300">
           <p className="text-lg font-medium p-5 text-black underline">
-            Lado Direito
+            {result}
           </p>
+          <Spinner />
         </div>
       </div>
     </div>
