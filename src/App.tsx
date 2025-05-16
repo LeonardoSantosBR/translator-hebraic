@@ -48,7 +48,7 @@ function App() {
           <p className="text-lg font-medium p-5 text-black underline">
             {result}
           </p>
-          <Spinner />
+          {isLoading && <Spinner />}
         </div>
       </div>
     </div>
