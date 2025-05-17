@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Header from "./components/header";
-import Spinner from "./components/spinner";
+import Translated from "./components/translated";
 import { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { handleTranslate } from "./http/handle-translate";
@@ -42,15 +42,7 @@ function App() {
             className="w-full h-64 p-4 text-white bg-blue-500  placeholder-white outline-none resize-none"
           />
         </div>
-        <div className="bg-slate-300">
-          {isLoading ? (
-            <Spinner />
-          ) : (
-            <p className="text-3xl font-medium p-5 text-black underline">
-              {result}
-            </p>
-          )}
-        </div>
+        <Translated isLoading={isLoading} result={result} />
       </div>
     </div>
   );
