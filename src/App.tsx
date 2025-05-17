@@ -46,7 +46,7 @@ function App() {
           {isLoading ? (
             <Spinner />
           ) : (
-            <p className="text-lg font-medium p-5 text-black underline">
+            <p className="text-3xl font-medium p-5 text-black underline">
               {result}
             </p>
           )}
