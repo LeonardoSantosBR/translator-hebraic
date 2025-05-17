@@ -33,13 +33,13 @@ function App() {
   return (
     <div className="w-full min-h-screen flex flex-col">
       <Header />
-      <div className="w-full flex-[9] bg-[#dfe3ee] grid grid-cols-2">
-        <div className="flex justify-center p-6 bg-blue-500">
+      <div className="w-full flex-[9] bg-[#dfe3ee] grid grid-cols-1 sm:grid-cols-2">
+        <div className="flex justify-center p-3 bg-blue-500">
           <textarea
             placeholder="Digite aqui..."
             value={text}
             onChange={(e) => setText(e.target.value)}
-            className="w-full h-64 p-4 text-white bg-blue-500  placeholder-white outline-none resize-none"
+            className="w-full p-4 text-white bg-blue-500  placeholder-white outline-none resize-none"
           />
         </div>
         <Translated isLoading={isLoading} result={result} />
