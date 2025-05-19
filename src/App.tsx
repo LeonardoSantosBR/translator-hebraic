@@ -32,8 +32,8 @@ function App() {
   return (
     <div className="w-full min-h-screen flex flex-col">
       <Header />
-      <div className="w-full flex-[9] bg-[#dfe3ee] grid grid-cols-2">
-        <TextArea text={text} setText={setText}/>
+      <div className="w-full flex-[9] bg-[#dfe3ee] grid grid-cols-1 sm:grid-cols-2">
+        <TextArea text={text} setText={setText} />
         <Translated isLoading={isLoading} result={result} />
       </div>
     </div>
