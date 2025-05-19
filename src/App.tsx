@@ -1,9 +1,9 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import Header from "./components/header";
-import Spinner from "./components/spinner";
+import Translated from "./components/translated";
 import { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { handleTranslate } from "./http/handle-translate";
+import TextArea from "./components/textarea";
 
 function App() {
   const [text, setText] = useState("");
@@ -22,35 +22,18 @@ function App() {
       setResult("");
       return;
     }
-
     const delayDebounce = setTimeout(() => {
       mutate({ text });
     }, 1000);
-
     return () => clearTimeout(delayDebounce);
-  }, [text]);
+  }, [mutate, text]);
 
   return (
     <div className="w-full min-h-screen flex flex-col">
       <Header />
-      <div className="w-full flex-[9] bg-[#dfe3ee] grid grid-cols-2">
-        <div className="flex justify-center p-6 bg-blue-500">
-          <textarea
-            placeholder="Digite aqui..."
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            className="w-full h-64 p-4 text-white bg-blue-500  placeholder-white outline-none resize-none"
-          />
-        </div>
-        <div className="bg-slate-300">
-          {isLoading ? (
-            <Spinner />
-          ) : (
-            <p className="text-3xl font-medium p-5 text-black underline">
-              {result}
-            </p>
-          )}
-        </div>
+      <div className="w-full flex-[9] bg-[#dfe3ee] grid grid-cols-1 sm:grid-cols-2">
+        <TextArea text={text} setText={setText} />
+        <Translated isLoading={isLoading} result={result} />
       </div>
     </div>
   );
