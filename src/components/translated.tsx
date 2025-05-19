@@ -12,7 +12,7 @@ function Translated({
       {isLoading ? (
         <Spinner />
       ) : (
-        <p className="text-3xl font-medium p-5 text-black underline">
+        <p className="text-2xl font-medium p-2 text-black underline">
           {result}
         </p>
       )}

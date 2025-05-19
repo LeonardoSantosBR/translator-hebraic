@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import Header from "./components/header";
 import Translated from "./components/translated";
 import { useEffect, useState } from "react";
@@ -27,7 +26,7 @@ function App() {
       mutate({ text });
     }, 1000);
     return () => clearTimeout(delayDebounce);
-  }, [text]);
+  }, [mutate, text]);
 
   return (
     <div className="w-full min-h-screen flex flex-col">
