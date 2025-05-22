@@ -2,7 +2,7 @@ import Header from "./components/header";
 import Translated from "./components/translated";
 import { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { handleTranslate } from "./http/handle-translate";
+import { handleTranslate } from "./http/handles/handle-translate";
 import TextArea from "./components/textarea";
 import type { Iform } from "./interfaces/Iform";
 
