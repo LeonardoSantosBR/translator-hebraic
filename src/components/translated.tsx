@@ -1,11 +1,11 @@
 import Spinner from "./spinner";
 
 function Translated({
-  isLoading,
   result,
+  isLoading,
 }: {
+  result?: string;
   isLoading: boolean;
-  result: string;
 }) {
   return (
     <div className="bg-slate-300">
